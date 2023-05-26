@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet";
-import favIcon from "../../assets/images/fav_icon.ico"
+import favIcon from "../../assets/images/comedy-coin-logo.ico"
 const Layout = ({ children }) => {
   return (
     <>
@@ -8,12 +8,12 @@ const Layout = ({ children }) => {
         <meta charset="utf-8" />
         <title>
           {" "}
-          Bithu - NFT Minting/Collection Landing Page React-Nextjs Template
+          Commedy Clones
         </title>
         <meta name="description" content="" />
         <link rel="shortcut icon" type="image/x-icon" href={favIcon} />
         {/* responsive tag */}
-        <meta httpEquiv="x-ua-compatible" content="ie=edge" /> 
+        <meta httpEquiv="x-ua-compatible" content="ie=edge" />
         {/* Bootstrap Latest compiled and minified CSS  */}
         <link
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -35,8 +35,8 @@ const Layout = ({ children }) => {
           type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
         />
-      </Helmet>  
-      {children} 
+      </Helmet>
+      {children}
     </>
   );
 };
