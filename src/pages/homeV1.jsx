@@ -12,11 +12,13 @@ import Team from "../components/section/team/v1";
 import FAQ from "../components/section/faq/v1";
 import Footer from "../components/section/footer/v1";
 import MetamaskModal from "../common/modal/metamaskModal/MetamaskModal";
-import MintNowModal from "../common/modal/mintNowModal";
+import MintNFTModal from "../common/modal/mintNowModal";
 import WalletModal from "../common/modal/walletModal/WalletModal";
+import MintTokenModal from "../common/modal/mintTokenModal";
 const HomeV1 = () => {
   const {
     visibility,
+      mintModalVisibility,
     metamaskModal,
     walletModalvisibility
   } = useModal();
@@ -24,7 +26,8 @@ const HomeV1 = () => {
     <Layout>
       <GlobalStyles />
       {metamaskModal && <MetamaskModal />}
-      {visibility && <MintNowModal />}
+      {visibility && <MintNFTModal />}
+      {mintModalVisibility && <MintTokenModal />}
       {walletModalvisibility && <WalletModal />}
       <Header />
       <Banner />

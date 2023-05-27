@@ -1,3 +1,3 @@
-import MintNowModal from "./MintNowModal";
+import MintNFTModal from "./MintNFTModal";
 
-export default MintNowModal;
+export default MintNFTModal;

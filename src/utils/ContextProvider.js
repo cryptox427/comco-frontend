@@ -3,6 +3,7 @@ import { ModalContext } from "./ModalContext";
 
 const ContextProvider = ({ children }) => {
   const [visibility, setVisibility] = useState(false);
+  const [mintModalVisibility, setMintModalVisibility] = useState(false);
   const [walletModalvisibility, setModalvisibility] = useState(false);
   const [shareModalVisibility, setShareModalvisibility] = useState(false);
   const [isPopup, setPopup] = useState(true);
@@ -20,6 +21,10 @@ const ContextProvider = ({ children }) => {
   const walletModalHandle = () => {
     setModalvisibility(!walletModalvisibility);
   };
+
+  const tokenMintModalHandle = () => {
+      setMintModalVisibility(!mintModalVisibility);
+    }
   const shareModalHandle = (e) => {
     e.preventDefault();
     setShareModalvisibility(!shareModalVisibility);
@@ -37,6 +42,8 @@ const ContextProvider = ({ children }) => {
     <ModalContext.Provider
       value={{
         visibility,
+          mintModalVisibility,
+          tokenMintModalHandle,
         mintModalHandle,
         walletModalHandle,
         walletModalvisibility,

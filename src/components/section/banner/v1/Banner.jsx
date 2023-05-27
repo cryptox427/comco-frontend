@@ -18,7 +18,7 @@ import {
 } from "../../../../contract/config";
 
 const Banner = () => {
-  const { mintModalHandle } = useModal();
+  const { mintModalHandle, tokenMintModalHandle } = useModal();
 
   const [totalSupply, setTotalSupply] = useState(5555);
   const [totalMinted, setTotalMinted] = useState(0);
@@ -28,30 +28,31 @@ const Banner = () => {
 
   const { address, isConnecting, isConnected, isDisconnected } = useAccount();
 
-  const { data: maxSupplyData } = useContractRead({ ...maxSupplyCall })
-  const { data: totalMintedData } = useContractRead({ ...totalMintedCall })
-  const { data: maxMintPerWalletData } = useContractRead({ ...maxMintPerWalletCall })
-  const { data: publicMintCostData } = useContractRead({ ...publicMintCostCall })
+  // const { data: maxSupplyData } = useContractRead({ ...maxSupplyCall })
+  // const { data: totalMintedData } = useContractRead({ ...totalMintedCall })
+  // const { data: maxMintPerWalletData } = useContractRead({ ...maxMintPerWalletCall })
+  // const { data: publicMintCostData } = useContractRead({ ...publicMintCostCall })
 
-  useEffect(() => {
-    if (isConnected) {
-      if (maxSupplyData) {
-        setTotalSupply(maxSupplyData.toString());
-      }
-      if (totalMintedData) {
-        setTotalMinted(totalMintedData.toString());
-      }
-      if (maxSupplyData && totalMintedData) {
-        setRemainingItem(totalSupply - totalMinted);
-      }
-      if (maxMintPerWalletData) {
-        setMaxMintPerWallet(maxMintPerWalletData.toString());
-      }
-      if (publicMintCostData) {
-        setPublicMintCost(publicMintCostData.toString() / 1000000000000000000);
-      }
-    }
-  })
+  // useEffect(() => {
+  //   console.log('banner------------------------')
+  //   if (isConnected) {
+  //     if (maxSupplyData) {
+  //       setTotalSupply(maxSupplyData.toString());
+  //     }
+  //     if (totalMintedData) {
+  //       setTotalMinted(totalMintedData.toString());
+  //     }
+  //     if (maxSupplyData && totalMintedData) {
+  //       setRemainingItem(totalSupply - totalMinted);
+  //     }
+  //     if (maxMintPerWalletData) {
+  //       setMaxMintPerWallet(maxMintPerWalletData.toString());
+  //     }
+  //     if (publicMintCostData) {
+  //       setPublicMintCost(publicMintCostData.toString() / 1000000000000000000);
+  //     }
+  //   }
+  // }, [address, isConnected])
 
   return (
     <BannerV1Wrapper id="home">
@@ -71,7 +72,7 @@ const Banner = () => {
                   {" "}
                   Mint now
                 </Button>
-                <Button lg variant="outline">
+                <Button lg variant="outline" onClick={() => tokenMintModalHandle()}>
                   Get ComCo Coin
                 </Button>
               </div>

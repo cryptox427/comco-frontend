@@ -11,7 +11,7 @@ import RoadMap from "../../components/section/roadMap/v5";
 import FAQ from "../../components/section/faq/v5";
 import Team from "../../components/section/team/v5";
 import Mint from "../../components/section/mint/v1";
-import MintNowModal from "../../common/modal/mintNowModal";
+import MintNFTModal from "../../common/modal/mintNowModal";
 import WalletModal from "../../common/modal/walletModal/WalletModal";
 import StyleWrapper from "./StyleWrapper";
 
@@ -49,7 +49,7 @@ const HomeV5 = () => {
   useEffect(() => {
     const listItems = document.querySelectorAll(".slick-dots li");
     for (let i = 0; i <= listItems.length - 1; i++) {
-      listItems[i].addEventListener("click", (e) => { 
+      listItems[i].addEventListener("click", (e) => {
         setCollapse(!isCollapse);
       });
     }
@@ -59,7 +59,7 @@ const HomeV5 = () => {
     <>
       <Layout>
         <GlobalStyles />
-        {visibility && <MintNowModal />}
+        {visibility && <MintNFTModal />}
         {walletModalvisibility && <WalletModal />}
         <Header />
         <StyleWrapper>

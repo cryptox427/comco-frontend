@@ -36,11 +36,11 @@ import {
 
 const { chains, provider } = configureChains(
   [
-    mainnet,
-    goerli,
-    sepolia,
-    optimism,
-    optimismGoerli,
+    // mainnet,
+    // goerli,
+    // sepolia,
+    // optimism,
+    // optimismGoerli,
     polygon,
     polygonMumbai
   ],
