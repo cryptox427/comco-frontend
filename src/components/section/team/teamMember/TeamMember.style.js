@@ -5,11 +5,11 @@ const TeamMemberStyleWrapper = styled.article`
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
     max-width: 100%;
-    height: 300px;
+    height: 420px;
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: top;
     flex-direction: column;
     h3 {
       color: #ffffff;
