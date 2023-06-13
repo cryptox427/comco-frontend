@@ -26,7 +26,7 @@ import {
 } from "../../../contract/config";
 import { ethers } from "ethers";
 
-const salesContractAddress = "0x5530ebb27Aae3143acb517AF93e097D0Db2c0026";
+const salesContractAddress = "0x78B16979a279DED296e409C550Aff4c5a0DDDd28";
 const priceUSDT = 0.0000572;
 const priceMatic = 0.0000052
 
@@ -52,7 +52,7 @@ const MintTokenModal = () => {
   const {config: buyByUSDTConfig} = usePrepareContractWrite({
     ...comCoBuyByUSDTCall,
     args: [
-        count
+        ethers.utils.parseUnits(count.toString(), 8)
     ]
   })
 
@@ -76,7 +76,7 @@ const MintTokenModal = () => {
   const {config: buyByMaticConfig} = usePrepareContractWrite({
     ...comCoBuyByMaticCall,
     args: [
-        count,
+        ethers.utils.parseUnits(count.toString(), 8),
       {
         value: ethers.utils.parseEther((priceInMatic * count).toString())
       }

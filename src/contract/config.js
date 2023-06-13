@@ -8,10 +8,10 @@ import { Buffer } from "buffer";
 window.Buffer = window.Buffer || Buffer;
 
 const contractAddress = "0xD88c24F137152B97BF33C5d500a3B5aC90dFf248";
-const comcoContractAddress = "0xa3aadb7421f9613CE0A3dA85FCa30Cdec427BF7A";
-const salesContractAddress = "0x5530ebb27Aae3143acb517AF93e097D0Db2c0026";
-const nftContractAddress = "0x12c98588648628B8DCac1Fb2Fd336a3bDa659AF8";
-const usdtContractAddress = "0x3ECd4A9c06CcC088E0e1ad2C95e3D9D2CB277e78";
+const comcoContractAddress = "0x0527c9f0A48ddda0fC1d409d8AC84b32561c1c92";
+const salesContractAddress = "0x78B16979a279DED296e409C550Aff4c5a0DDDd28";
+const nftContractAddress = "0xdf55856589761027642994ed4Ef6385E05439Eba";
+const usdtContractAddress = "0xc2132D05D31c914a87C6611C10748AEb04B58e8F";
 
 //contract configuration
 export const contractConfig = {
