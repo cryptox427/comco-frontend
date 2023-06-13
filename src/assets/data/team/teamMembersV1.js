@@ -32,7 +32,7 @@ const data = [
   {
     avatar: avatarThumb2,
     name: "Amanda Lukens",
-    designation: "SVP",
+    designation: "Vice President",
     socialLinks: [
       {
         icon: <FaLinkedinIn />,
@@ -50,7 +50,7 @@ const data = [
   },
   {
     avatar: avatarThumb3,
-    name: "Rhashad Hicks",
+    name: "Rhashad Hicks II",
     designation: "Executive",
     socialLinks: [
       {
@@ -69,8 +69,8 @@ const data = [
   },
   {
     avatar: avatarThumb4,
-    name: "Primas Simpson",
-    designation: "Executive",
+    name: "Valarie 'Tina' Graham",
+    designation: "Manager",
     socialLinks: [
       {
         icon: <FaLinkedinIn />,
