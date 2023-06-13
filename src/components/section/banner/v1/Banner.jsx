@@ -15,12 +15,13 @@ import {
   totalMintedCall,
   maxMintPerWalletCall,
   publicMintCostCall,
+  nftTotalSupplyGetCall
 } from "../../../../contract/config";
 
 const Banner = () => {
   const { mintModalHandle, tokenMintModalHandle } = useModal();
 
-  const [totalSupply, setTotalSupply] = useState(5555);
+  const [totalSupply, setTotalSupply] = useState(2500);
   const [totalMinted, setTotalMinted] = useState(0);
   const [remainingItem, setRemainingItem] = useState(5555);
   const [maxMintPerWallet, setMaxMintPerWallet] = useState(2);
@@ -28,31 +29,19 @@ const Banner = () => {
 
   const { address, isConnecting, isConnected, isDisconnected } = useAccount();
 
+  const { data: totalMintedData } = useContractRead({...nftTotalSupplyGetCall})
+
   // const { data: maxSupplyData } = useContractRead({ ...maxSupplyCall })
   // const { data: totalMintedData } = useContractRead({ ...totalMintedCall })
   // const { data: maxMintPerWalletData } = useContractRead({ ...maxMintPerWalletCall })
   // const { data: publicMintCostData } = useContractRead({ ...publicMintCostCall })
 
-  // useEffect(() => {
-  //   console.log('banner------------------------')
-  //   if (isConnected) {
-  //     if (maxSupplyData) {
-  //       setTotalSupply(maxSupplyData.toString());
-  //     }
-  //     if (totalMintedData) {
-  //       setTotalMinted(totalMintedData.toString());
-  //     }
-  //     if (maxSupplyData && totalMintedData) {
-  //       setRemainingItem(totalSupply - totalMinted);
-  //     }
-  //     if (maxMintPerWalletData) {
-  //       setMaxMintPerWallet(maxMintPerWalletData.toString());
-  //     }
-  //     if (publicMintCostData) {
-  //       setPublicMintCost(publicMintCostData.toString() / 1000000000000000000);
-  //     }
-  //   }
-  // }, [address, isConnected])
+  useEffect(() => {
+      if (totalMintedData) {
+
+        setTotalMinted(totalMintedData.toString());
+      }
+  }, [address, isConnected])
 
   return (
     <BannerV1Wrapper id="home">
@@ -77,7 +66,7 @@ const Banner = () => {
                 </Button>
               </div>
               <div className="coin-info">
-                <span>Max {maxMintPerWallet} NFTs per wallet . Price {publicMintCost} ComCo + gas</span>
+                <span>Price {publicMintCost} ComCo / 0.0052 Matic + gas</span>
                 <span>
                   MINT IS LIVE{" "}
                   <span className="highlighted">UNTIL 25 APR 04:00H</span>
