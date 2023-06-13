@@ -35,7 +35,7 @@ const MintTokenModal = () => {
   let [price, setPrice] = useState("0.001");
   const { tokenMintModalHandle } = useModal();
 
-  const [totalSupply, setTotalSupply] = useState(9999);
+  const [totalSupply, setTotalSupply] = useState(437000000);
   const [totalMinted, setTotalMinted] = useState(4583);
   const [remainingItem, setRemainingItem] = useState(4583);
   const [publicMintCost, setPublicMintCost] = useState(0.15);
@@ -146,15 +146,15 @@ const MintTokenModal = () => {
               <div className="mint_count_list">
                 <ul>
                   <li>
-                    <h5>Remaining</h5>
+                    <h5>Total Sale</h5>
                     <h5>
-                      {remainingItem}/<span>{totalSupply}</span>
+                      <span>{totalSupply}</span>
                     </h5>
                   </li>
                   <li>
                     <h5>Price</h5>
                     <h5>{priceInUSDT} USDT / {priceInMatic} Matic</h5>
-                  </li>
+                  </li>t
                   <li>
                     <h5>Quantity</h5>
                     <div className="mint_quantity_sect">
