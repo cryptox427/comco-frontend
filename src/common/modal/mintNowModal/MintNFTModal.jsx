@@ -101,8 +101,13 @@ const MintNFTModal = () => {
     fetch();
   }, [BoughtWithComCo, BoughtWithMatic])
 
+  Number.prototype.countDecimals = function () {
+    if(Math.floor(this.valueOf()) === this.valueOf()) return 0;
+    return this.toString().split(".")[1].length || 0;
+  }
 
-  const decimalHandle = (val, decimal) => {
+  const decimalHandle = (val) => {
+    const decimal = val.countDecimals();
     return Math.floor(val * Math.pow(10, decimal)) / Math.pow(10, decimal)
   }
 

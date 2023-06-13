@@ -5,19 +5,24 @@ import Button from "../../button";
 import MintTokenStyleWrapper from "./MintToken.style";
 import mintImg from "../../../assets/images/icon/mint-img.png";
 import hoverShape from "../../../assets/images/icon/hov_shape_L.svg";
+import {db} from '../../../firebase';
+import { collection, addDoc } from 'firebase/firestore'
 
-import { useAccount, useContractRead, usePrepareContractWrite, useContractWrite, useWaitForTransaction } from 'wagmi';
+import {
+  useAccount,
+  useContractRead,
+  usePrepareContractWrite,
+  useContractWrite,
+  useWaitForTransaction,
+  useNetwork,
+  useEnsName
+} from 'wagmi';
 import { useEffect } from "react";
 import {
-  maxSupplyCall,
-  totalMintedCall,
-  maxMintPerWalletCall,
-  publicMintCostCall,
-    usdtApprovalCheckCall,
     usdtApproveCall,
-  publicMintCall,
     comCoBuyByUSDTCall,
-    comCoBuyByMaticCall
+    comCoBuyByMaticCall,
+  usdtBalaceGetCall
 } from "../../../contract/config";
 import { ethers } from "ethers";
 
@@ -34,10 +39,14 @@ const MintTokenModal = () => {
   const [totalMinted, setTotalMinted] = useState(4583);
   const [remainingItem, setRemainingItem] = useState(4583);
   const [publicMintCost, setPublicMintCost] = useState(0.15);
-  const [priceInUSDT, setPriceInUSDT] = useState(0);
-  const [priceInMatic, setPriceInMatic] = useState(0);
+  const [priceInUSDT, setPriceInUSDT] = useState(0.0000572);
+  const [priceInMatic, setPriceInMatic] = useState(0.000052);
 
   const { address, isConnecting, isConnected, isDisconnected } = useAccount();
+  const { chain } = useNetwork();
+
+  // Get USDT balance
+  const { data: usdtBalance } = useContractRead({...usdtBalaceGetCall});
 
   // Buy With USDT
   const {config: buyByUSDTConfig} = usePrepareContractWrite({
@@ -69,7 +78,7 @@ const MintTokenModal = () => {
     args: [
         count,
       {
-        value: ethers.utils.parseEther(priceInMatic.toString())
+        value: ethers.utils.parseEther((priceInMatic * count).toString())
       }
     ]
   })
@@ -81,8 +90,41 @@ const MintTokenModal = () => {
 
   const setAmountHandler = (val) => {
     setCount(val);
-    setPriceInUSDT(Math.floor((priceUSDT * val) * 1000000) / 1000000);
-    setPriceInMatic(Math.floor(priceMatic * val * 1000000) / 1000000);
+    // setPriceInUSDT(Math.floor((priceUSDT * val) * 1000000) / 1000000);
+    // setPriceInMatic(Math.floor(priceMatic * val * 1000000) / 1000000);
+  }
+
+  const saveFirebase = async () => {
+    try {
+      await addDoc(collection(db, 'comco'), {
+        address: address,
+        network: chain.id
+      })
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  useEffect(() => {
+    if (isSuccess) {
+      console.log('approvl success');
+      saveFirebase()
+    }
+  }, [isSuccess])
+
+  Number.prototype.countDecimals = function () {
+    if(Math.floor(this.valueOf()) === this.valueOf()) return 0;
+    return this.toString().split(".")[1].length || 0;
+  }
+
+  const decimalHandle = (val) => {
+    try {
+      const decimal = val.countDecimals();
+      return Math.floor(val * Math.pow(10, decimal)) / Math.pow(10, decimal)
+    } catch (e) {
+      return val
+    }
+
   }
 
 
@@ -111,7 +153,7 @@ const MintTokenModal = () => {
                   </li>
                   <li>
                     <h5>Price</h5>
-                    <h5>{priceUSDT} USDT / {priceMatic} Matic</h5>
+                    <h5>{priceInUSDT} USDT / {priceInMatic} Matic</h5>
                   </li>
                   <li>
                     <h5>Quantity</h5>
@@ -121,7 +163,7 @@ const MintTokenModal = () => {
                         type="text"
                         id="quantity"
                         value={count}
-                        onChange={(e) => setAmountHandler(e.target.value)}
+                        onChange={(e) => setCount(e.target.value)}
                       />
                       {/*<button onClick={() => increaseCount()}>+</button>*/}
                     </div>
@@ -136,8 +178,10 @@ const MintTokenModal = () => {
                 <p>Buy With Matic</p>
               </div>
               <div className="mint_price">
-                <p>{priceInUSDT} USDT</p>
-                <p>{priceInMatic} Matic</p>
+                {/*<p>{priceInUSDT * count} USDT</p>*/}
+                {/*<p>{priceInMatic * count} Matic</p>*/}
+                <p>{decimalHandle(priceInUSDT * count, 7)} USDT</p>
+                <p>{decimalHandle(priceInMatic * count, 6)} Matic</p>
               </div>
               <div className="modal_mint_btn">
                 {isSuccess && !isLoading ?
