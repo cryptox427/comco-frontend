@@ -13,7 +13,7 @@ import {
   nftBuyWithMatic,
   comCoApproveCall,
     nftMaxLimitGetCall,
-    nftTotalSupplyGetCall
+    nftTotalSupplyGetCall,
 } from "../../../contract/config";
 import { ethers } from "ethers";
 
@@ -23,7 +23,7 @@ const MintNFTModal = () => {
   let [price, setPrice] = useState("0.001");
   const { mintModalHandle } = useModal();
 
-  const [totalSupply, setTotalSupply] = useState(0);
+  const [totalSupply, setTotalSupply] = useState(2500);
   const [totalMinted, setTotalMinted] = useState(4583);
   const [remainingItem, setRemainingItem] = useState(4583);
   const [maxMintPerWallet, setMaxMintPerWallet] = useState(2);
@@ -83,9 +83,9 @@ const MintNFTModal = () => {
 
   useEffect(() => {
     if (isConnected) {
-      if (maxLimitData) {
-        setTotalSupply(maxLimitData.toString())
-      }
+      // if (maxLimitData) {
+      //   setTotalSupply(maxLimitData.toString())
+      // }
       if (totalSupplyData) {
         setTotalMinted(totalSupplyData.toString())
       }
@@ -101,8 +101,13 @@ const MintNFTModal = () => {
     fetch();
   }, [BoughtWithComCo, BoughtWithMatic])
 
+  Number.prototype.countDecimals = function () {
+    if(Math.floor(this.valueOf()) === this.valueOf()) return 0;
+    return this.toString().split(".")[1].length || 0;
+  }
 
-  const decimalHandle = (val, decimal) => {
+  const decimalHandle = (val) => {
+    const decimal = val.countDecimals();
     return Math.floor(val * Math.pow(10, decimal)) / Math.pow(10, decimal)
   }
 

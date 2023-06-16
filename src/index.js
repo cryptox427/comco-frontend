@@ -42,7 +42,7 @@ const { chains, provider } = configureChains(
     // optimism,
     // optimismGoerli,
     polygon,
-    polygonMumbai
+    // polygonMumbai
   ],
   [
     publicProvider()

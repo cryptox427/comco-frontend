@@ -6,7 +6,7 @@ const Counter = ({ className, ...rest }) => {
   const [viewPortEntered, setViewPortEntered] = useState(false);
 
   return (
-    <CountUp {...rest} start={viewPortEntered ? null : 0}>
+    <CountUp {...rest} start={viewPortEntered ? null : 0} duration={1}>
       {({ countUpRef }) => {
         return (
           <VisibilitySensor
