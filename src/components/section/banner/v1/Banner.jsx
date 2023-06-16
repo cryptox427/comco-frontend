@@ -60,7 +60,7 @@ const Banner = () => {
         <div className="row">
           <div className="col-lg-6">
             <div className="bithu_v1_baner_left">
-              <h2>Comedy Clones NFT collections</h2>
+              <h2>Comedy Coins NFT collections</h2>
               <h3>
                 <span className="count">
                   <Counter end={totalMinted} duration={totalMinted} />
@@ -73,7 +73,7 @@ const Banner = () => {
                   Mint now
                 </Button>
                 <Button lg variant="outline" onClick={() => tokenMintModalHandle()}>
-                  Get ComCo Coin
+                  Get Comedy Coins
                 </Button>
               </div>
               <div className="coin-info">

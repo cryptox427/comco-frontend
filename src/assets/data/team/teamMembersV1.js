@@ -12,7 +12,7 @@ import avatarThumb8 from "../../images/team/crew_avatar8.png";
 const data = [
   {
     avatar: avatarThumb1,
-    name: "Rhashad Hicks",
+    name: "Rhashad H",
     designation: "Founder and CEO",
     socialLinks: [
       {
@@ -31,7 +31,7 @@ const data = [
   },
   {
     avatar: avatarThumb2,
-    name: "Amanda Lukens",
+    name: "Mandy L",
     designation: "Vice President",
     socialLinks: [
       {
@@ -50,7 +50,7 @@ const data = [
   },
   {
     avatar: avatarThumb3,
-    name: "Rhashad Hicks II",
+    name: "Rhashad H. II",
     designation: "Executive",
     socialLinks: [
       {
@@ -69,7 +69,7 @@ const data = [
   },
   {
     avatar: avatarThumb4,
-    name: "Valarie 'Tina' Graham",
+    name: "Valaire G",
     designation: "Manager",
     socialLinks: [
       {
