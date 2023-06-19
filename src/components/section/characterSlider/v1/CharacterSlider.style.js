@@ -22,6 +22,7 @@ const CharacterSliderWrapper = styled.section`
   }
   .slick__slider__item {
     padding: 0 15px;
+    
   }
 
   .character-thumb {
@@ -30,6 +31,9 @@ const CharacterSliderWrapper = styled.section`
     justify-content: center;
     align-items: center;
     background: rgba(255, 255, 255, 0.05);
+  }
+  .character-thumb img {
+    width: 85%;
   }
 `;
 

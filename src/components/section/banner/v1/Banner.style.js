@@ -134,6 +134,7 @@ const BannerV1Wrapper = styled.section`
       .bithu_v1_baner_right_img {
         position: relative;
         z-index: 1;
+        width: 80%;
       }
     }
   }

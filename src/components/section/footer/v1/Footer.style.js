@@ -55,6 +55,9 @@ const FooterStyleWrapper = styled.footer`
       height: 100%;
       z-index: 0;
     }
+    .footer_logo img {
+      width: 200px;
+    }
     .footer_shapes_right {
       position: absolute;
       right: 0px;

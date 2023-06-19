@@ -37,7 +37,7 @@ const Footer = () => {
                     </a>
                   </div>
                   <div className="copiright_text">
-                    <p>Copyright © 2023 Comedy Clones</p>
+                    <p>Copyright © 2023 Comedy Coins</p>
                   </div>
                 </div>
                 <a href="# " className="bact_to_top_btn">

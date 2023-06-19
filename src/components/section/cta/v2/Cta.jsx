@@ -39,7 +39,7 @@ const CTA = () => {
                 <Button lg variant="mint" className="wishlist_btn">
                   Whitelist Now
                 </Button>
-                <Button lg variant="blue" className="join_discord_btn">
+                <Button lg variant="blue" className="join_discord_btn" href="https://discord.gg/BqdKee6TBb">
                   {" "}
                   <FaDiscord /> Join Discord
                 </Button>
