@@ -121,9 +121,9 @@ const Header = () => {
                 <button className="menu_btn" onClick={() => handleMobileMenu()}>
                   <MdNotes />
                 </button>
-                <Button sm variant="outline" className="join_btn">
+                <a href="https://discord.gg/BqdKee6TBb" target="_blank"><Button sm variant="outline" className="join_btn">
                   <FaDiscord /> Join
-                </Button>
+                </Button></a>
 
                 <ConnectButton
                  label="Connect"
