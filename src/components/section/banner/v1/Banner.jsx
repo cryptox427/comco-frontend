@@ -66,7 +66,7 @@ const Banner = () => {
                 </Button>
               </div>
               <div className="coin-info">
-                <span>Price {publicMintCost} ComCo / 0.0052 Matic + gas</span>
+                <span>Price {publicMintCost} ComCoin / 0.0052 Matic + gas</span>
                 <span>
                   MINT IS LIVE{" "}
                   <span className="highlighted">UNTIL 25 APR 04:00H</span>

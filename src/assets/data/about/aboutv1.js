@@ -9,12 +9,12 @@ import aboutCardIcon3 from "../../images/icon/aboutus_card_icon3.svg"
         {
             icon: aboutCardIcon1,
             title: "Purchasing Power",
-            text: "Comedy Coinss can be used to purchase tickets to comedy shows, seminars, festivals, and exclusive NFTs."
+            text: "Comedy Coins can be used to purchase tickets to comedy shows, seminars, festivals, and exclusive NFTs."
         },
         {
             icon: aboutCardIcon2,
             title: "Rewards and Incentives",
-            text: 'Holders of Comedy Coinss may be eligible for special rewards, like early access to ticket sales, VIP experiences, and exclusive content.'
+            text: 'Holders of Comedy Coins may be eligible for special rewards, like early access to ticket sales, VIP experiences, and exclusive content.'
         },
         {
             icon: aboutCardIcon3,
