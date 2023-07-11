@@ -29,8 +29,8 @@ const MintNFTModal = () => {
   const [maxMintPerWallet, setMaxMintPerWallet] = useState(2);
   const [publicMintCost, setPublicMintCost] = useState(0.15);
 
-  const [priceInMatic, setPriceInMatic] = useState(0.0052);
-  const [priceInComCo, stPriceInComCo] = useState(100)
+  const [priceInMatic, setPriceInMatic] = useState(18);
+  const [priceInComCo, stPriceInComCo] = useState(400)
 
   const { address, isConnecting, isConnected, isDisconnected } = useAccount();
   const { data: maxLimitData, refetch: getMaxLimitData } = useContractRead({...nftMaxLimitGetCall})

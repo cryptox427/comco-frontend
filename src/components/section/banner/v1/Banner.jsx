@@ -25,7 +25,7 @@ const Banner = () => {
   const [totalMinted, setTotalMinted] = useState(0);
   const [remainingItem, setRemainingItem] = useState(5555);
   const [maxMintPerWallet, setMaxMintPerWallet] = useState(2);
-  const [publicMintCost, setPublicMintCost] = useState(100);
+  const [publicMintCost, setPublicMintCost] = useState(400);
 
   const { address, isConnecting, isConnected, isDisconnected } = useAccount();
 
@@ -66,7 +66,7 @@ const Banner = () => {
                 </Button>
               </div>
               <div className="coin-info">
-                <span>Price {publicMintCost} ComCoin / 0.0052 Matic + gas</span>
+                <span>Price {publicMintCost} ComCoin / 18 Matic + gas</span>
                 <span>
                   MINT IS LIVE{" "}
                   <span className="highlighted">UNTIL 1 OCT 06:00H</span>

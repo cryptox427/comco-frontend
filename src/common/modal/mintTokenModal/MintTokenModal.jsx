@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useModal } from "../../../utils/ModalContext";
+import { decimalHandle  } from "../../../utils/utils";
 import { FiX } from "react-icons/fi";
 import Button from "../../button";
 import MintTokenStyleWrapper from "./MintToken.style";
@@ -39,8 +40,8 @@ const MintTokenModal = () => {
   const [totalMinted, setTotalMinted] = useState(4583);
   const [remainingItem, setRemainingItem] = useState(4583);
   const [publicMintCost, setPublicMintCost] = useState(0.15);
-  const [priceInUSDT, setPriceInUSDT] = useState(0.0000572);
-  const [priceInMatic, setPriceInMatic] = useState(0.000052);
+  const [priceInUSDT, setPriceInUSDT] = useState(0.03);
+  const [priceInMatic, setPriceInMatic] = useState(0.045);
 
   const { address, isConnecting, isConnected, isDisconnected } = useAccount();
   const { chain } = useNetwork();
@@ -78,7 +79,7 @@ const MintTokenModal = () => {
     args: [
         ethers.utils.parseUnits(count.toString(), 8),
       {
-        value: ethers.utils.parseEther((priceInMatic * count).toString())
+        value: ethers.utils.parseEther((decimalHandle(priceInMatic * count, 3)).toString())
       }
     ]
   })
@@ -117,15 +118,15 @@ const MintTokenModal = () => {
     return this.toString().split(".")[1].length || 0;
   }
 
-  const decimalHandle = (val) => {
-    try {
-      const decimal = val.countDecimals();
-      return Math.floor(val * Math.pow(10, decimal)) / Math.pow(10, decimal)
-    } catch (e) {
-      return val
-    }
+  // const decimalHandle = (val, decimal) => {
+  //   try {
+  //     // const decimal = val.countDecimals();
+  //     return Math.ceil(val * Math.pow(10, decimal)) / Math.pow(10, decimal)
+  //   } catch (e) {
+  //     return val
+  //   }
 
-  }
+  // }
 
 
   return (
@@ -180,8 +181,8 @@ const MintTokenModal = () => {
               <div className="mint_price">
                 {/*<p>{priceInUSDT * count} USDT</p>*/}
                 {/*<p>{priceInMatic * count} Matic</p>*/}
-                <p>{decimalHandle(priceInUSDT * count, 7)} USDT</p>
-                <p>{decimalHandle(priceInMatic * count, 6)} Matic</p>
+                <p>{decimalHandle(priceInUSDT * count, 2)} USDT</p>
+                <p>{decimalHandle(priceInMatic * count, 3)} Matic</p>
               </div>
               <div className="modal_mint_btn">
                 {isSuccess && !isLoading ?
