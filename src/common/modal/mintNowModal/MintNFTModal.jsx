@@ -14,10 +14,11 @@ import {
   comCoApproveCall,
     nftMaxLimitGetCall,
     nftTotalSupplyGetCall,
+    nftContractAddress
 } from "../../../contract/config";
 import { ethers } from "ethers";
 
-const nftContractAddress = '0x12c98588648628B8DCac1Fb2Fd336a3bDa659AF8';
+// const nftContractAddress = '0x12c98588648628B8DCac1Fb2Fd336a3bDa659AF8';
 const MintNFTModal = () => {
   let [count, setCount] = useState(1);
   let [price, setPrice] = useState("0.001");
@@ -173,6 +174,9 @@ const MintNFTModal = () => {
                       Approve ComCo
                     </Button>
                 }
+                {/* <Button lg variant="mint" onClick={() => buyByComCo()} disabled={IsBuyingWithComCo}>
+                      Mint With ComCo
+                    </Button>  */}
                 <Button lg variant="mint" onClick={() => buyByMatic()} disabled={IsBuyingWithMatic}>
                   Mint With Matic
                 </Button>

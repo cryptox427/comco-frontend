@@ -10,7 +10,7 @@ window.Buffer = window.Buffer || Buffer;
 const contractAddress = "0xD88c24F137152B97BF33C5d500a3B5aC90dFf248";
 const comcoContractAddress = "0xa5721B86d63A374692AC0450794DF063e1D9DB65";
 const salesContractAddress = "0xd9A4fB73F4c12213701b6b219756D55960e7B611";
-const nftContractAddress = "0x9CC38Ff0246235dA184a7a29dE39F0D89972B228";
+export const nftContractAddress = "0x9CC38Ff0246235dA184a7a29dE39F0D89972B228";
 const usdtContractAddress = "0xc2132D05D31c914a87C6611C10748AEb04B58e8F";
 
 //contract configuration
